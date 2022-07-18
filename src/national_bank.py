@@ -1,13 +1,17 @@
+import urllib.request
+import urllib.response
 from xml.etree import ElementTree
 
-import httpx
-
+import exceptions
 from data_types import CurrencyFXRate
 
 
 def get_fx_rates() -> str:
     url = 'https://www.nbkr.kg/XML/daily.xml'
-    return httpx.get(url).text
+    with urllib.request.urlopen(url) as response:
+        if response.status != 200:
+            raise exceptions.NationalBankAPIError
+        return response.read().decode('utf-8')
 
 
 def parse_fx_rates_xml(fx_rates_xml: str) -> list[CurrencyFXRate]:
