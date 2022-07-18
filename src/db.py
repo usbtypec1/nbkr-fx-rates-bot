@@ -16,9 +16,9 @@ __all__ = (
 
 @contextlib.contextmanager
 def auto_closing_database(database_path: Union[pathlib.Path, str]) -> sqlite3.Cursor:
-    with contextlib.closing(sqlite3.connect(database_path)) as connection, \
-            connection, \
-            contextlib.closing(connection.cursor()) as cursor:
+    with (contextlib.closing(sqlite3.connect(database_path)) as connection,
+          connection,
+          contextlib.closing(connection.cursor()) as cursor):
         yield cursor
 
 
