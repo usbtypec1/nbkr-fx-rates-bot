@@ -16,6 +16,14 @@ __all__ = (
 
 @contextlib.contextmanager
 def auto_closing_database(database_path: Union[pathlib.Path, str]) -> sqlite3.Cursor:
+    """Provides cursor of sqlite database and safely closes it.
+
+    Args:
+        database_path: Path to database.
+
+    Returns:
+        Cursor of database.
+    """
     with (contextlib.closing(sqlite3.connect(database_path)) as connection,
           connection,
           contextlib.closing(connection.cursor()) as cursor):

@@ -1,3 +1,7 @@
+import http.client
+import json
+import urllib.request
+
 from data_types import CurrencyFXRate, NewAndOldFXRatesPair, MatchedCurrencies
 
 
