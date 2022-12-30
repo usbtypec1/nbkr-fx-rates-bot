@@ -6,6 +6,8 @@ authors = ["Eldos <eldos.baktybekov@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.9"
+bs4 = "^0.0.1"
+lxml = "^4.9.2"
 
 [tool.poetry.dev-dependencies]
 pytest = "^7.0.1"
