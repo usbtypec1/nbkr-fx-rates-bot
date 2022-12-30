@@ -142,3 +142,4 @@ src/database.db
 .idea
 
 config.ini
+database.db
