@@ -140,3 +140,5 @@ cython_debug/
 
 src/database.db
 .idea
+
+config.ini
