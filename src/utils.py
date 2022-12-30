@@ -26,6 +26,5 @@ def format_changed_fx_rate_text(old_fx_rate: CurrencyFXRate, new_fx_rate: Curren
         return 'Currency has not been changed'
     emoji = '📈' if new_fx_rate.value > old_fx_rate.value else '📉'
     diff = round(new_fx_rate.value * 100 / old_fx_rate.value - 100, 2)
-    diff = f'+{diff}%' if diff > 0 else f'{diff}%'
     return (f'{emoji} {new_fx_rate.iso_code}: <b>{old_fx_rate.value}'
-            f' ➞ {new_fx_rate.value}</b> ({diff})')
+            f' ➞ {new_fx_rate.value}</b> ({diff:+}%)')
