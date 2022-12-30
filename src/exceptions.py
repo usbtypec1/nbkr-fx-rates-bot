@@ -1,6 +1,14 @@
-class NationalBankAPIError(Exception):
+class BankAPIError(Exception):
     pass
 
 
-class ConfigError(Exception):
+class NationalBankAPIError(BankAPIError):
+    pass
+
+
+class CommercialBankAPIError(BankAPIError):
+    pass
+
+
+class FXRateNotFoundError(Exception):
     pass
