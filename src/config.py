@@ -1,3 +1,4 @@
+import json
 import pathlib
 from configparser import ConfigParser
 from dataclasses import dataclass
@@ -28,7 +29,6 @@ def load_config(config_file_path: str | pathlib.Path) -> Config:
 
     telegram_bot = config_parser['telegram_bot']
     token = telegram_bot['token']
-    chat_ids_raw = telegram_bot['chat_ids'].split(',')
-    chat_ids = [int(chat_id) for chat_id in chat_ids_raw if chat_id]
+    chat_ids = json.loads(telegram_bot['chat_ids'])
 
     return Config(telegram_bot_token=token, chat_ids=chat_ids)
