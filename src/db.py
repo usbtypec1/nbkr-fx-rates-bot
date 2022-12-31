@@ -4,7 +4,7 @@ import sqlite3
 from decimal import Decimal
 
 import exceptions
-from data_types import CurrencyFXRate
+from models import CurrencyFXRate
 
 __all__ = (
     'SqliteDatabase',

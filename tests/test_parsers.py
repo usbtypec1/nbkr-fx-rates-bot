@@ -2,7 +2,7 @@ import pathlib
 from decimal import Decimal
 
 from banks.parsers import parse_commercial_bank_fx_rates, parse_national_bank_fx_rates
-from data_types import CurrencyFXRate
+from models import CurrencyFXRate
 from config import ROOT_PATH
 
 

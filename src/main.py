@@ -3,7 +3,7 @@ import pathlib
 import traceback
 from typing import TypedDict, Callable, TypeVar
 
-from data_types import CurrencyFXRate
+from models import CurrencyFXRate
 from db import SqliteDatabase, upsert_currency_fx_rates, init_database, get_currency_fx_rates
 import exceptions
 

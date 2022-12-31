@@ -1,6 +1,6 @@
 import collections
 
-from data_types import CurrencyFXRate
+from models import CurrencyFXRate
 
 
 def group_fx_rates_by_bank_name(

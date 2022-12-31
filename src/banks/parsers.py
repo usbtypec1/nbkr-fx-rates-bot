@@ -3,7 +3,7 @@ from xml.etree import ElementTree
 
 from bs4 import BeautifulSoup
 
-from data_types import CurrencyFXRate
+from models import CurrencyFXRate
 
 __all__ = ('parse_commercial_bank_fx_rates', 'parse_national_bank_fx_rates')
 
