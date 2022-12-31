@@ -1,21 +1,6 @@
-import json
-import urllib.request
+import httpx
 
-__all__ = (
-    'TelegramAPIMethod',
-    'TelegramBot',
-)
-
-
-class TelegramAPIMethod:
-
-    def __init__(self, token: str):
-        self._token = token
-        self._base_url = f'https://api.telegram.org/bot{self._token}'
-
-    @property
-    def send_message(self) -> str:
-        return self._base_url + '/sendMessage'
+__all__ = ('TelegramBot',)
 
 
 class TelegramBot:
@@ -23,11 +8,12 @@ class TelegramBot:
 
     def __init__(self, token: str):
         self._token = token
-        self.telegram_api_method = TelegramAPIMethod(self._token)
+
+    @property
+    def base_url(self) -> str:
+        return f'https://api.telegram.org/bot{self._token}'
 
     def send_message(self, chat_id: int, text: str) -> bool:
-        request = urllib.request.Request(self.telegram_api_method.send_message, method='POST')
-        request.add_header('Content-Type', 'application/json')
-        data = json.dumps({'chat_id': chat_id, 'text': text, 'parse_mode': 'html'}).encode('utf-8')
-        with urllib.request.urlopen(request, data) as response:
-            return response.status == 200
+        url = f'{self.base_url}/sendMessage'
+        response = httpx.post(url, json={'chat_id': chat_id, 'text': text, 'parse_mode': 'html'})
+        return response.is_success
